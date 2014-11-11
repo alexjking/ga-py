@@ -13,15 +13,14 @@ class Chromosome:
 	chromosome = list("")
 
 	def __init__(self):
-		self.chromosome = [random.choice(string.ascii_lowercase) for _ in xrange(len(self.CONST_TARGET_STRING))]
+		self.chromosome = [random.choice(string.ascii_lowercase + ' ') for _ in xrange(len(self.CONST_TARGET_STRING))]
 	
 
 	def mutate(self):
 		child = Chromosome()
 		for i in xrange(len(self.CONST_TARGET_STRING)):
 			if(random.random() < self.CONST_MUTATION_RATE):
-				child.chromosome[i] = random.choice(string.ascii_lowercase)
-				print("mutating")
+				child.chromosome[i] = random.choice(string.ascii_lowercase + ' ')
 			else:
 				child.chromosome[i] = self.chromosome[i]
 		return child

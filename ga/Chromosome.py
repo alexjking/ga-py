@@ -32,6 +32,9 @@ class Chromosome:
 				fitness += 1
 		return fitness
 
+	def set_chromosome(self, chromosomeList):
+		self.chromosome = chromosomeList
+
 	def to_string(self):
 		fitness = self.calculate_fitness()
 		print "{} fit={}".format(''.join(self.chromosome), fitness) 

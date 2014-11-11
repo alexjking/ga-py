@@ -26,12 +26,15 @@ class Chromosome:
 				child.chromosome[i] = self.chromosome[i]
 		return child
 
-	def to_string(self):
+	def calculate_fitness(self):
 		fitness = 0
 		for i in xrange(len(self.CONST_TARGET_STRING)):
 			if(self.CONST_TARGET_STRING[i] == self.chromosome[i]):
 				fitness += 1
+		return fitness
 
+	def to_string(self):
+		fitness = self.calculate_fitness()
 		print "{} fit={}".format(''.join(self.chromosome), fitness) 
 
 

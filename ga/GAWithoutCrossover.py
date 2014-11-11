@@ -27,9 +27,9 @@ class GAWithoutCrossover:
 
 			#create a child from the parent
 			child = parent.mutate()
-			if child.calculate_fitness() > currentFitness:
-				currentFitness = child.calculate_fitness()
-				child.to_string()
+			childFitness = child.calculate_fitness()
+			if childFitness > currentFitness:
+				currentFitness = childFitness
 
 			#choose a chromosome to be replaced with the generated child
 			randomMemberA = random.choice(population)

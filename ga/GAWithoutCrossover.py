@@ -5,13 +5,14 @@ import random
 
 class GAWithoutCrossover:
 
-	def __init__(self, populationNum):
+	def __init__(self, populationNum, mutationRate):
 		self.populationNum = populationNum
+		self.mutationRate = mutationRate
 
 	def run(self):
 
 		#create a population
-		population =  [Chromosome.Chromosome() for _ in range(self.populationNum)]
+		population =  [Chromosome.Chromosome(mutation=self.mutationRate) for _ in range(self.populationNum)]
 		currentFitness = 0
 		generationNum = 0
 

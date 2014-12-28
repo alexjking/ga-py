@@ -5,13 +5,14 @@ import random
 
 class GAWithCrossover:
 
-	def __init__(self, populationNum):
+	def __init__(self, populationNum, mutationRate):
 		self.populationNum = populationNum
+		self.mutationRate = mutationRate
 
 	def run(self):
 
 		#create a population
-		population =  [Chromosome.Chromosome() for _ in range(self.populationNum)]
+		population =  [Chromosome.Chromosome(mutation=self.mutationRate) for _ in range(self.populationNum)]
 		currentFitness = 0
 		generationNum = 0
 
@@ -42,6 +43,8 @@ class GAWithCrossover:
 			if childFitness > currentFitness:
 				currentFitness = childFitness
 
+			#child.to_string()
+
 			#choose a chromosome to be replaced with the generated child
 			randomMemberA = random.choice(population)
 			randomMemberB = random.choice(population)
@@ -56,7 +59,7 @@ class GAWithCrossover:
 		return generationNum
 
 	def crossover(self, parentA, parentB):
-		crossoverResult = Chromosome.Chromosome()
+		crossoverResult = Chromosome.Chromosome(mutation=self.mutationRate)
 		for i in xrange(len(crossoverResult.CONST_TARGET_STRING)):
 			if random.random() < 0.5:
 				crossoverResult.chromosome[i] = parentA.chromosome[i]
